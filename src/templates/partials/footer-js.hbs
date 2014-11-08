@@ -1,0 +1,38 @@
+---
+component: footer-js
+---
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+<!-- ToDo: add to the concat -->
+<script type="text/javascript" src="assets/js/jquery.themepunch.plugins.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.themepunch.revolution.min.js"></script>
+
+<script type="text/javascript" src="assets/js/main.js"></script>
+
+<!-- THE SCRIPT INITIALISATION -->
+<script type="text/javascript">
+    var revapi;
+    jQuery(document).ready(function() {
+        revapi = jQuery('.tp-banner').revolution(
+                {
+                    delay:6000,
+                    startwidth:1170,
+                    startheight:738,
+                    hideThumbs:10,
+                    fullWidth:"on",
+                    forceFullWidth:"on",
+                    navigationType:"off",
+                    navigationArrows:"solo",
+                    onHoverStop:"off",
+                    navigationVOffset:60,
+                    hideThumbsOnMobile:"on",
+                    hideBulletsOnMobile:"on",
+                    hideArrowsOnMobile:"on"
+                });
+
+    });
+
+</script>
+
+<!-- END REVOLUTION SLIDER -->
