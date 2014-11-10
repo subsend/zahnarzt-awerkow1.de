@@ -96,7 +96,7 @@ module.exports = function(grunt) {
           environment: 'production',
           imagesDir: '<%= config.src %>/assets/images/',
           fontsDir: '<%= config.src %>/assets/fonts/',
-          noLineComments: true,
+          noLineComments: true
 
         }
       }
