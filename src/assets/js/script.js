@@ -3,454 +3,454 @@
 
 var $ = jQuery.noConflict();
 
-$(document).ready(function($) {
-	"use strict";
+$(document).ready(function ($) {
+    "use strict";
 
-	/* global google: false */
+    /* global google: false */
 
-	/*-------------------------------------------------*/
-	/* =  portfolio isotope
-	/*-------------------------------------------------*/
+    /*-------------------------------------------------*/
+    /* =  portfolio isotope
+     /*-------------------------------------------------*/
 
-	var winDow = $(window);
-		// Needed variables
-		var $container=$('.masonry');
-		var $filter=$('.filter');
+    var winDow = $(window);
+    // Needed variables
+    var $container = $('.masonry');
+    var $filter = $('.filter');
 
-		try{
-			$container.imagesLoaded( function(){
-				$container.trigger('resize');
-				$container.isotope({
-					filter:'*',
-					layoutMode:'masonry',
-					animationOptions:{
-						duration:750,
-						easing:'linear'
-					}
-				});
+    try {
+        $container.imagesLoaded(function () {
+            $container.trigger('resize');
+            $container.isotope({
+                filter: '*',
+                layoutMode: 'masonry',
+                animationOptions: {
+                    duration: 750,
+                    easing: 'linear'
+                }
+            });
 
-				$('.triggerAnimation').waypoint(function() {
-					var animation = $(this).attr('data-animate');
-					$(this).css('opacity', '');
-					$(this).addClass("animated " + animation);
+            $('.triggerAnimation').waypoint(function () {
+                        var animation = $(this).attr('data-animate');
+                        $(this).css('opacity', '');
+                        $(this).addClass("animated " + animation);
 
-				},
-					{
-						offset: '75%',
-						triggerOnce: true
-					}
-				);
-			});
-		} catch(err) {
-		}
+                    },
+                    {
+                        offset: '75%',
+                        triggerOnce: true
+                    }
+            );
+        });
+    } catch (err) {
+    }
 
-		winDow.bind('resize', function(){
-			var selector = $filter.find('a.active').attr('data-filter');
+    winDow.bind('resize', function () {
+        var selector = $filter.find('a.active').attr('data-filter');
 
-			try {
-				$container.isotope({ 
-					filter	: selector,
-					animationOptions: {
-						duration: 750,
-						easing	: 'linear',
-						queue	: false,
-					}
-				});
-			} catch(err) {
-			}
-			return false;
-		});
-		
-		// Isotope Filter 
-		$filter.find('a').click(function(){
-			var selector = $(this).attr('data-filter');
+        try {
+            $container.isotope({
+                filter: selector,
+                animationOptions: {
+                    duration: 750,
+                    easing: 'linear',
+                    queue: false,
+                }
+            });
+        } catch (err) {
+        }
+        return false;
+    });
 
-			try {
-				$container.isotope({ 
-					filter	: selector,
-					animationOptions: {
-						duration: 750,
-						easing	: 'linear',
-						queue	: false,
-					}
-				});
-			} catch(err) {
+    // Isotope Filter
+    $filter.find('a').click(function () {
+        var selector = $(this).attr('data-filter');
 
-			}
-			return false;
-		});
+        try {
+            $container.isotope({
+                filter: selector,
+                animationOptions: {
+                    duration: 750,
+                    easing: 'linear',
+                    queue: false
+                }
+            });
+        } catch (err) {
+
+        }
+        return false;
+    });
 
 
-	var filterItemA	= $('.filter li a');
+    var filterItemA = $('.filter li a');
 
-		filterItemA.on('click', function(){
-			var $this = $(this);
-			if ( !$this.hasClass('active')) {
-				filterItemA.removeClass('active');
-				$this.addClass('active');
-			}
-		});
+    filterItemA.on('click', function () {
+        var $this = $(this);
+        if (!$this.hasClass('active')) {
+            filterItemA.removeClass('active');
+            $this.addClass('active');
+        }
+    });
 
-	/*-------------------------------------------------*/
-	/* =  browser detect
-	/*-------------------------------------------------*/
-	try {
-		$.browserSelector();
-		// Adds window smooth scroll on chrome.
-		if($("html").hasClass("chrome")) {
-			$.smoothScroll();
-		}
-	} catch(err) {
+    /*-------------------------------------------------*/
+    /* =  browser detect
+     /*-------------------------------------------------*/
+    try {
+        $.browserSelector();
+        // Adds window smooth scroll on chrome.
+        if ($("html").hasClass("chrome")) {
+            $.smoothScroll();
+        }
+    } catch (err) {
 
-	}
-	
-	/*-------------------------------------------------*/
-	/* =  Animated content
-	/*-------------------------------------------------*/
+    }
 
-	try {
-		/* ================ ANIMATED CONTENT ================ */
+    /*-------------------------------------------------*/
+    /* =  Animated content
+     /*-------------------------------------------------*/
+
+    try {
+        /* ================ ANIMATED CONTENT ================ */
         if ($(".animated")[0]) {
             $('.animated').css('opacity', '0');
         }
 
-        $('.triggerAnimation').waypoint(function() {
-            var animation = $(this).attr('data-animate');
-            $(this).css('opacity', '');
-            $(this).addClass("animated " + animation);
+        $('.triggerAnimation').waypoint(function () {
+                    var animation = $(this).attr('data-animate');
+                    $(this).css('opacity', '');
+                    $(this).addClass("animated " + animation);
 
-        },
+                },
                 {
                     offset: '75%',
                     triggerOnce: true
                 }
         );
-	} catch(err) {
+    } catch (err) {
 
-	}
-	
-	/*-------------------------------------------------*/
-	/* =  Scroll to TOP
-	/*-------------------------------------------------*/
+    }
 
-	var animateTopButton = $('.go-top'),
-		htmBody = $('html, body');
-		
-	animateTopButton.click(function(){
-	htmBody.animate({scrollTop: 0}, 'slow');
-		return false;
-	});
+    /*-------------------------------------------------*/
+    /* =  Scroll to TOP
+     /*-------------------------------------------------*/
 
-	/*-------------------------------------------------*/
-	/* =  remove animation in mobile device
-	/*-------------------------------------------------*/
-	if ( winDow.width() < 992 ) {
-		$('div.triggerAnimation').removeClass('animated');
-		$('div.triggerAnimation').removeClass('triggerAnimation');
-	}
+    var animateTopButton = $('.go-top'),
+            htmBody = $('html, body');
 
-	/*-------------------------------------------------*/
-	/* =  Search animation
-	/*-------------------------------------------------*/
-	
-	var searchToggle = $('.open-search'),
-		inputAnime = $(".form-search"),
-		body = $('body');
+    animateTopButton.click(function () {
+        htmBody.animate({scrollTop: 0}, 'slow');
+        return false;
+    });
 
-	searchToggle.on('click', function(event){
-		event.preventDefault();
+    /*-------------------------------------------------*/
+    /* =  remove animation in mobile device
+     /*-------------------------------------------------*/
+    if (winDow.width() < 992) {
+        $('div.triggerAnimation').removeClass('animated');
+        $('div.triggerAnimation').removeClass('triggerAnimation');
+    }
 
-		if ( !inputAnime.hasClass('active') ) {
-			inputAnime.addClass('active');
-		} else {
-			inputAnime.removeClass('active');			
-		}
-	});
+    /*-------------------------------------------------*/
+    /* =  Search animation
+     /*-------------------------------------------------*/
 
-	body.on('click', function(){
-		inputAnime.removeClass('active');
-	});
+    var searchToggle = $('.open-search'),
+            inputAnime = $(".form-search"),
+            body = $('body');
 
-	var elemBinds = $('.open-search, .form-search');
-	elemBinds.bind('click', function(e) {
-		e.stopPropagation();
-	});
+    searchToggle.on('click', function (event) {
+        event.preventDefault();
 
-	/*-------------------------------------------------*/
-	/* =  fullwidth carousell
-	/*-------------------------------------------------*/
-	try {
-		var fullCarousell = $("#owl-demo");
-		fullCarousell.owlCarousel({
-			navigation : true,
-			afterInit : function(elem){
-				var that = this;
-				that.owlControls.appendTo(elem);
-			},
-			items: 4,
-			itemsDesktop: [1199, 3],
-			itemsDesktopSmall: [979, 2],
-			itemsTablet: [768, 1],
-			itemsTabletSmall: false,
-			itemsMobile: [479, 1]
-		});
-	} catch(err) {
+        if (!inputAnime.hasClass('active')) {
+            inputAnime.addClass('active');
+        } else {
+            inputAnime.removeClass('active');
+        }
+    });
 
-	}
+    body.on('click', function () {
+        inputAnime.removeClass('active');
+    });
 
-	var prevButton = $('.buttons a.owl-prev'),
-		nextButton = $('.buttons a.owl-next');
+    var elemBinds = $('.open-search, .form-search');
+    elemBinds.bind('click', function (e) {
+        e.stopPropagation();
+    });
 
-		prevButton.live('click', function(e) {
-			e.preventDefault();
-			fullCarousell.trigger('owl.prev');
-			blogcarousel.trigger('owl.prev');
-			fivecarousel.trigger('owl.prev');
-		});
+    /*-------------------------------------------------*/
+    /* =  fullwidth carousell
+     /*-------------------------------------------------*/
+    try {
+        var fullCarousell = $("#owl-demo");
+        fullCarousell.owlCarousel({
+            navigation: true,
+            afterInit: function (elem) {
+                var that = this;
+                that.owlControls.appendTo(elem);
+            },
+            items: 4,
+            itemsDesktop: [1199, 3],
+            itemsDesktopSmall: [979, 2],
+            itemsTablet: [768, 1],
+            itemsTabletSmall: false,
+            itemsMobile: [479, 1]
+        });
+    } catch (err) {
 
-		nextButton.on('click', function(e) {
-			e.preventDefault();
-			fullCarousell.trigger('owl.next');
-			blogcarousel.trigger('owl.next');
-			fivecarousel.trigger('owl.next');
-		});
+    }
 
-	try {
-		var blogcarousel = $("#owl-demo2");
-		blogcarousel.owlCarousel({
-			navigation : true,
-			afterInit : function(elem){
-				var that = this;
-				that.owlControls.appendTo(elem);
-			},
-			items: 3,
-			itemsDesktop: [1199, 3],
-			itemsDesktopSmall: [979, 2],
-			itemsTablet: [768, 1],
-			itemsTabletSmall: false,
-			itemsMobile: [479, 1]
-		});
-	} catch(err) {
+    var prevButton = $('.buttons a.owl-prev'),
+            nextButton = $('.buttons a.owl-next');
 
-	}
+    prevButton.live('click', function (e) {
+        e.preventDefault();
+        fullCarousell.trigger('owl.prev');
+        blogcarousel.trigger('owl.prev');
+        fivecarousel.trigger('owl.prev');
+    });
 
-	try {
-		var fivecarousel = $(".five-col");
-		fivecarousel.owlCarousel({
-			navigation : true,
-			afterInit : function(elem){
-				var that = this;
-				that.owlControls.appendTo(elem);
-			},
-			items: 5,
-			itemsDesktop: [1199, 5],
-			itemsDesktopSmall: [979, 3],
-			itemsTablet: [768, 2],
-			itemsTabletSmall: false,
-			itemsMobile: [479, 1]
-		});
-	} catch(err) {
+    nextButton.on('click', function (e) {
+        e.preventDefault();
+        fullCarousell.trigger('owl.next');
+        blogcarousel.trigger('owl.next');
+        fivecarousel.trigger('owl.next');
+    });
 
-	}
+    try {
+        var blogcarousel = $("#owl-demo2");
+        blogcarousel.owlCarousel({
+            navigation: true,
+            afterInit: function (elem) {
+                var that = this;
+                that.owlControls.appendTo(elem);
+            },
+            items: 3,
+            itemsDesktop: [1199, 3],
+            itemsDesktopSmall: [979, 2],
+            itemsTablet: [768, 1],
+            itemsTabletSmall: false,
+            itemsMobile: [479, 1]
+        });
+    } catch (err) {
 
-	/*-------------------------------------------------*/
-	/* =  flexslider
-	/*-------------------------------------------------*/
-	try {
+    }
 
-		var SliderPost = $('.flexslider');
+    try {
+        var fivecarousel = $(".five-col");
+        fivecarousel.owlCarousel({
+            navigation: true,
+            afterInit: function (elem) {
+                var that = this;
+                that.owlControls.appendTo(elem);
+            },
+            items: 5,
+            itemsDesktop: [1199, 5],
+            itemsDesktopSmall: [979, 3],
+            itemsTablet: [768, 2],
+            itemsTabletSmall: false,
+            itemsMobile: [479, 1]
+        });
+    } catch (err) {
 
-		SliderPost.flexslider({
-			slideshowSpeed: 3000,
-			easing: "swing"
-		});
-	} catch(err) {
+    }
 
-	}
+    /*-------------------------------------------------*/
+    /* =  flexslider
+     /*-------------------------------------------------*/
+    try {
 
-	/* ---------------------------------------------------------------------- */
-	/*	Contact Map
-	/* ---------------------------------------------------------------------- */
-	var contact = {"lat":"41.8744661", "lon":"-87.6614312"}; //Change a map coordinate here!
+        var SliderPost = $('.flexslider');
 
-	try {
-		var mapContainer = $('.map');
-		mapContainer.gmap3({
-			action: 'addMarker',
-			marker:{
-				options:{
-					icon : new google.maps.MarkerImage('images/marker.png')
-				}
-			},
-			latLng: [contact.lat, contact.lon],
-			map:{
-				center: [contact.lat, contact.lon],
-				zoom: 15
-				},
-			},
-			{action: 'setOptions', args:[{scrollwheel:false}]}
-		);
-	} catch(err) {
+        SliderPost.flexslider({
+            slideshowSpeed: 3000,
+            easing: "swing"
+        });
+    } catch (err) {
 
-	}
+    }
 
-	/* ---------------------------------------------------------------------- */
-	/*	magnific-popup
-	/* ---------------------------------------------------------------------- */
+    /* ---------------------------------------------------------------------- */
+    /*	Contact Map
+     /* ---------------------------------------------------------------------- */
+    var contact = {"lat": "41.8744661", "lon": "-87.6614312"}; //Change a map coordinate here!
 
-	try {
-		// Example with multiple objects
-		$('.zoom').magnificPopup({
-			type: 'image',
-			gallery: {
-				enabled: true
-			}
-		});
+    try {
+        var mapContainer = $('.map');
+        mapContainer.gmap3({
+                    action: 'addMarker',
+                    marker: {
+                        options: {
+                            icon: new google.maps.MarkerImage('images/marker.png')
+                        }
+                    },
+                    latLng: [contact.lat, contact.lon],
+                    map: {
+                        center: [contact.lat, contact.lon],
+                        zoom: 15
+                    },
+                },
+                {action: 'setOptions', args: [{scrollwheel: false}]}
+        );
+    } catch (err) {
 
-	} catch(err) {
+    }
 
-	}
+    /* ---------------------------------------------------------------------- */
+    /*	magnific-popup
+     /* ---------------------------------------------------------------------- */
 
-	/* ---------------------------------------------------------------------- */
-	/*	Bootstrap tabs
-	/* ---------------------------------------------------------------------- */
-	
-	var tabId = $('.nav-tabs a');
-	try{		
-		tabId.click(function (e) {
-			e.preventDefault();
-			$(this).tab('show');
-		});
-	} catch(err) {
-	}
-	
-	/*-------------------------------------------------*/
-	/* = slider Testimonial
-	/*-------------------------------------------------*/
+    try {
+        // Example with multiple objects
+        $('.zoom').magnificPopup({
+            type: 'image',
+            gallery: {
+                enabled: true
+            }
+        });
 
-	var slidertestimonial = $('.bxslider');
-	try{		
-		slidertestimonial.bxSlider({
-			mode: 'horizontal'
-		});
-	} catch(err) {
-	}
+    } catch (err) {
 
-	/*-------------------------------------------------*/
-	/* = skills animate
-	/*-------------------------------------------------*/
+    }
 
-	try{
+    /* ---------------------------------------------------------------------- */
+    /*	Bootstrap tabs
+     /* ---------------------------------------------------------------------- */
 
-		var skillBar = $('.skills-box');
-		skillBar.appear(function() {
+    var tabId = $('.nav-tabs a');
+    try {
+        tabId.click(function (e) {
+            e.preventDefault();
+            $(this).tab('show');
+        });
+    } catch (err) {
+    }
 
-			var animateElement = $(".meter > p");
-			animateElement.each(function() {
-				$(this)
-					.data("origWidth", $(this).width())
-					.width(0)
-					.animate({
-						width: $(this).data("origWidth")
-					}, 1200);
-			});
+    /*-------------------------------------------------*/
+    /* = slider Testimonial
+     /*-------------------------------------------------*/
 
-		});
-	} catch(err) {
-	}
+    var slidertestimonial = $('.bxslider');
+    try {
+        slidertestimonial.bxSlider({
+            mode: 'horizontal'
+        });
+    } catch (err) {
+    }
 
-	/*-------------------------------------------------*/
-	/* =  count increment
-	/*-------------------------------------------------*/
-	try {
-		$('.statistic-post').appear(function() {
-			$('.timer').countTo({
-				speed: 4000,
-				refreshInterval: 60,
-				formatter: function (value, options) {
-					return value.toFixed(options.decimals);
-				}
-			});
-		});
-	} catch(err) {
+    /*-------------------------------------------------*/
+    /* = skills animate
+     /*-------------------------------------------------*/
 
-	}
+    try {
 
-	/*-------------------------------------------------*/
-	/* =  parallax
-	/*-------------------------------------------------*/
-	
-	try{
-		$('.parallax').appear(function() {
-			$.stellar({
-				horizontalScrolling: false,
-				verticalOffset: 0,
-				parallaxBackgrounds: true
-			});
-		});
-		
-	} catch(err) {
-	}
+        var skillBar = $('.skills-box');
+        skillBar.appear(function () {
 
-	/* ---------------------------------------------------------------------- */
-	/*	Accordion
-	/* ---------------------------------------------------------------------- */
-	var clickElem = $('a.accord-link');
+            var animateElement = $(".meter > p");
+            animateElement.each(function () {
+                $(this)
+                        .data("origWidth", $(this).width())
+                        .width(0)
+                        .animate({
+                            width: $(this).data("origWidth")
+                        }, 1200);
+            });
 
-	clickElem.on('click', function(e){
-		e.preventDefault();
+        });
+    } catch (err) {
+    }
 
-		var $this = $(this),
-			parentCheck = $this.parents('.accord-elem'),
-			accordItems = $('.accord-elem'),
-			accordContent = $('.accord-content');
-			
-		if( !parentCheck.hasClass('active')) {
+    /*-------------------------------------------------*/
+    /* =  count increment
+     /*-------------------------------------------------*/
+    try {
+        $('.statistic-post').appear(function () {
+            $('.timer').countTo({
+                speed: 4000,
+                refreshInterval: 60,
+                formatter: function (value, options) {
+                    return value.toFixed(options.decimals);
+                }
+            });
+        });
+    } catch (err) {
 
-			accordContent.slideUp(400, function(){
-				accordItems.removeClass('active');
-			});
-			parentCheck.find('.accord-content').slideDown(400, function(){
-				parentCheck.addClass('active');
-			});
+    }
 
-		} else {
+    /*-------------------------------------------------*/
+    /* =  parallax
+     /*-------------------------------------------------*/
 
-			accordContent.slideUp(400, function(){
-				accordItems.removeClass('active');
-			});
+    try {
+        $('.parallax').appear(function () {
+            $.stellar({
+                horizontalScrolling: false,
+                verticalOffset: 0,
+                parallaxBackgrounds: true
+            });
+        });
 
-		}
-	});
+    } catch (err) {
+    }
 
-	/* ---------------------------------------------------------------------- */
-	/*	Contact Form
-	/* ---------------------------------------------------------------------- */
+    /* ---------------------------------------------------------------------- */
+    /*	Accordion
+     /* ---------------------------------------------------------------------- */
+    var clickElem = $('a.accord-link');
 
-	var submitContact = $('#submit_contact'),
-		message = $('#msg');
+    clickElem.on('click', function (e) {
+        e.preventDefault();
 
-	submitContact.on('click', function(e){
-		e.preventDefault();
+        var $this = $(this),
+                parentCheck = $this.parents('.accord-elem'),
+                accordItems = $('.accord-elem'),
+                accordContent = $('.accord-content');
 
-		var $this = $(this);
-		
-		$.ajax({
-			type: "POST",
-			url: 'contact.php',
-			dataType: 'json',
-			cache: false,
-			data: $('#contact-form').serialize(),
-			success: function(data) {
+        if (!parentCheck.hasClass('active')) {
 
-				if(data.info !== 'error'){
-					$this.parents('form').find('input[type=text],textarea,select').filter(':visible').val('');
-					message.hide().removeClass('success').removeClass('error').addClass('success').html(data.msg).fadeIn('slow').delay(5000).fadeOut('slow');
-				} else {
-					message.hide().removeClass('success').removeClass('error').addClass('error').html(data.msg).fadeIn('slow').delay(5000).fadeOut('slow');
-				}
-			}
-		});
-	});
+            accordContent.slideUp(400, function () {
+                accordItems.removeClass('active');
+            });
+            parentCheck.find('.accord-content').slideDown(400, function () {
+                parentCheck.addClass('active');
+            });
+
+        } else {
+
+            accordContent.slideUp(400, function () {
+                accordItems.removeClass('active');
+            });
+
+        }
+    });
+
+    /* ---------------------------------------------------------------------- */
+    /*	Contact Form
+     /* ---------------------------------------------------------------------- */
+
+    var submitContact = $('#submit_contact'),
+            message = $('#msg');
+
+    submitContact.on('click', function (e) {
+        e.preventDefault();
+
+        var $this = $(this);
+
+        $.ajax({
+            type: "POST",
+            url: 'contact.php',
+            dataType: 'json',
+            cache: false,
+            data: $('#contact-form').serialize(),
+            success: function (data) {
+
+                if (data.info !== 'error') {
+                    $this.parents('form').find('input[type=text],textarea,select').filter(':visible').val('');
+                    message.hide().removeClass('success').removeClass('error').addClass('success').html(data.msg).fadeIn('slow').delay(5000).fadeOut('slow');
+                } else {
+                    message.hide().removeClass('success').removeClass('error').addClass('error').html(data.msg).fadeIn('slow').delay(5000).fadeOut('slow');
+                }
+            }
+        });
+    });
 
 });

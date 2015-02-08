@@ -92,7 +92,7 @@ module.exports = function(grunt) {
       dist: {
         options: {
           sassDir: '<%= config.src %>/assets/sass/',
-          cssDir: '<%= config.dist %>/assets/css/',
+          cssDir: '<%= config.src %>/assets/css/',
           environment: 'production',
           imagesDir: '<%= config.src %>/assets/images/',
           fontsDir: '<%= config.src %>/assets/fonts/',
@@ -145,6 +145,7 @@ module.exports = function(grunt) {
     'clean',
     'assemble',
     'imagemin',
+    'compass',
     'concat'
   ]);
 
