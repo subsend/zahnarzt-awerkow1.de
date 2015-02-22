@@ -271,7 +271,7 @@ $(document).ready(function ($) {
     /* ---------------------------------------------------------------------- */
     /*	Contact Map
      /* ---------------------------------------------------------------------- */
-    var contact = {"lat": "41.8744661", "lon": "-87.6614312"}; //Change a map coordinate here!
+    var contact = {"lat": "52.522642", "lon": "13.331055"}; //Change a map coordinate here!
 
     try {
         var mapContainer = $('.map');
@@ -279,7 +279,7 @@ $(document).ready(function ($) {
                     action: 'addMarker',
                     marker: {
                         options: {
-                            icon: new google.maps.MarkerImage('images/marker.png')
+                            icon: new google.maps.MarkerImage('assets/images/marker.png')
                         }
                     },
                     latLng: [contact.lat, contact.lon],
