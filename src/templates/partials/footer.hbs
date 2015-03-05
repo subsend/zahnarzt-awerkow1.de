@@ -15,7 +15,7 @@ component: footer
         <div class="container">
             <div class="row">
 
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <div class="widget footer-widget text-widget">
                         <h1>Zahnarztpraxis</h1>
                         <p>Hallo liebe Gäste, wir freuen uns Sie begrüßen zu dürfen und dass Sie auf unserer Internetseite vorbei schauen.</p>
@@ -24,58 +24,60 @@ component: footer
                     </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <div class="widget footer-widget tweets-widget">
-                        <h1>Recent Tweets</h1>
+                        <h1>Externe Resourcen</h1>
                         <ul>
                             <li>
-                                <i class="fa fa-twitter"></i>
+                                <i class="fa fa-external-link"></i>
 
-                                <p>Photoshop to CSS3 magic - CSS Hat - <a href="#">http://t.co/ad2CggDN</a></p>
-                                <span>15 June 2012</span>
+                                <p>KZV Berlin <a href="http://www.kzv-berlin.de/">www.kzv-berlin.de</a></p>
+                                <span>Die Kassenzahnärztliche Vereinigung Berlin</span>
                             </li>
                             <li>
-                                <i class="fa fa-twitter"></i>
+                                <i class="fa fa-external-link"></i>
 
-                                <p>CrossFit Advanced - another well done website, featured on CSSLuxury - <a href="#">http://t.co/ad2CggDN</a>
+                                <p>
+                                    ZM - online
+                                    <a href="http://www.zm-online.de/">www.zm-online.de</a>
                                 </p>
-                                <span>15 June 2012</span>
+                                <span>Umfangreiches Online-Angebot des offiziellen Organs der Zahnärzteschaft mit Downloads, Rezensionen und Online Fortbildung</span>
                             </li>
                         </ul>
                     </div>
                 </div>
-
-                <div class="col-md-3">
-                    <div class="widget footer-widget flickr-widget">
-                        <h1>Flickr Stream</h1>
-                        <ul class="flickr">
-                            <li><a href="#"><img alt="" src="http://placehold.it/70x70"></a></li>
-                            <li><a href="#"><img alt="" src="http://placehold.it/70x70"></a></li>
-                            <li><a href="#"><img alt="" src="http://placehold.it/70x70"></a></li>
-                            <li><a href="#"><img alt="" src="http://placehold.it/70x70"></a></li>
-                            <li><a href="#"><img alt="" src="http://placehold.it/70x70"></a></li>
-                            <li><a href="#"><img alt="" src="http://placehold.it/70x70"></a></li>
-                            <li><a href="#"><img alt="" src="http://placehold.it/70x70"></a></li>
-                            <li><a href="#"><img alt="" src="http://placehold.it/70x70"></a></li>
-                            <li><a href="#"><img alt="" src="http://placehold.it/70x70"></a></li>
-                        </ul>
-                    </div>
+            {{! ToDo: implement Flickr and Newssubscribe widget }}
+            {{!
+            <div class="col-md-3">
+                <div class="widget footer-widget flickr-widget">
+                    <h1>Flickr Stream</h1>
+                    <ul class="flickr">
+                        <li><a href="#"><img alt="" src="http://placehold.it/70x70"></a></li>
+                        <li><a href="#"><img alt="" src="http://placehold.it/70x70"></a></li>
+                        <li><a href="#"><img alt="" src="http://placehold.it/70x70"></a></li>
+                        <li><a href="#"><img alt="" src="http://placehold.it/70x70"></a></li>
+                        <li><a href="#"><img alt="" src="http://placehold.it/70x70"></a></li>
+                        <li><a href="#"><img alt="" src="http://placehold.it/70x70"></a></li>
+                        <li><a href="#"><img alt="" src="http://placehold.it/70x70"></a></li>
+                        <li><a href="#"><img alt="" src="http://placehold.it/70x70"></a></li>
+                        <li><a href="#"><img alt="" src="http://placehold.it/70x70"></a></li>
+                    </ul>
                 </div>
+            </div>
+            <div class="col-md-3">
+                <div class="widget footer-widget subscribe-widget">
+                    <h1>Subscribe</h1>
 
-                <div class="col-md-3">
-                    <div class="widget footer-widget subscribe-widget">
-                        <h1>Subscribe</h1>
+                    <p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa
+                        quis enim. </p>
 
-                        <p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa
-                            quis enim. </p>
-
-                        <form class="subscribe-form">
-                            <input type="text" id="e-mail" name="e-mail" placeholder="Email Address"/>
-                            <input type="submit" id="submit" value="submit"/>
-                        </form>
-                    </div>
+                    <form class="subscribe-form">
+                        <input type="text" id="e-mail" name="e-mail" placeholder="Email Address"/>
+                        <input type="submit" id="submit" value="submit"/>
+                    </form>
                 </div>
-
+            </div>
+            }}
             </div>
             <div class="footer-line">
                 <p>Zahnarzt Wadim Awerkow, Levetzowsraße 25 10555 Berlin. COPYRIGHT © 2015 <a href="mailto:dmitri.awerkow@gmail.com">Dmitri Awerkow</a></p>
