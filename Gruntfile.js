@@ -97,7 +97,6 @@ module.exports = function(grunt) {
           imagesDir: '<%= config.src %>/assets/images/',
           fontsDir: '<%= config.src %>/assets/fonts/',
           noLineComments: true
-
         }
       }
     },
@@ -114,18 +113,26 @@ module.exports = function(grunt) {
       }
     },
 
-    //concat
-    concat: {
+    cssmin: {
       options: {
-        separator: ';'
+          shorthandCompacting: false,
+          roundingPrecision: -1
       },
-      js: {
-        src: ['<%= config.src %>/assets/js/*.js'],
-        dest: '<%= config.dist %>/assets/js/main.js'
+      target: {
+          files: {
+              '<%= config.dist %>/assets/css/main.css': ['<%= config.src %>/assets/css/*.css']
+          }
+      }
+    },
+
+    uglify: {
+      options: {
+
       },
-      css: {
-        src: ['<%= config.src %>/assets/css/*.css'],
-        dest: '<%= config.dist %>/assets/css/main.css'
+      target: {
+          files: {
+              '<%= config.dist %>/assets/js/main.js': ['<%= config.src %>/assets/js/*.js']
+          }
       }
     },
 
@@ -146,7 +153,8 @@ module.exports = function(grunt) {
     'assemble',
     'imagemin',
     'compass',
-    'concat'
+    'cssmin',
+    'uglify'
   ]);
 
   grunt.registerTask('default', [
