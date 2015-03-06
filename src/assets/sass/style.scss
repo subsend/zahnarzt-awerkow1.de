@@ -3476,3 +3476,18 @@ footer {
         width: 100%;
     }
 }
+
+/**
+ *
+ * Fix for mobile devices contact form
+ *
+ */
+
+.contact-info--telephone {
+    p a
+    {
+        background: none;
+        width: 100%;
+        height: auto;
+    }
+}
