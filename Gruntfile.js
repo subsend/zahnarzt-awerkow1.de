@@ -137,6 +137,19 @@ module.exports = function(grunt) {
           }
       }
     },
+    htmlmin: {
+      dist: {
+          options: {
+              removeComments: true,
+              collapseWhitespace: true
+          },
+          files: {
+              '<%= config.dist %>/index.html': '<%= config.dist %>/index.html',
+              '<%= config.dist %>/contact.html': '<%= config.dist %>/contact.html',
+              '<%= config.dist %>/imprint.html': '<%= config.dist %>/imprint.html'
+          }
+      }
+    },
 
     //copy fonts to destination
       copy: {
@@ -170,6 +183,7 @@ module.exports = function(grunt) {
     'compass',
     'copy',
     'cssmin',
+    'htmlmin',
     'uglify'
   ]);
 
