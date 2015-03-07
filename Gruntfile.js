@@ -91,11 +91,12 @@ module.exports = function(grunt) {
     compass: {
       dist: {
         options: {
+          require:'font-awesome-sass',
           sassDir: '<%= config.src %>/assets/sass/',
           cssDir: '<%= config.src %>/assets/css/',
           environment: 'production',
           imagesDir: '<%= config.src %>/assets/images/',
-          fontsDir: '<%= config.src %>/assets/fonts/',
+          fontsDir: 'assets/fonts/',
           noLineComments: true
         }
       }
@@ -116,6 +117,7 @@ module.exports = function(grunt) {
     cssmin: {
       options: {
           shorthandCompacting: false,
+          keepSpecialComments: 0,
           roundingPrecision: -1
       },
       target: {
@@ -136,6 +138,19 @@ module.exports = function(grunt) {
       }
     },
 
+    //copy fonts to destination
+      copy: {
+          main: {
+              files: [{
+                  expand: true,
+                  cwd: '<%= config.src %>/assets/fonts/',
+                  src: ['**'],
+                  dest: '<%= config.dist %>/assets/fonts/'
+              }]
+          }
+      },
+
+
     // Before generating any new files,
     // remove any previously-created files.
     clean: ['<%= config.dist %>/**/*.{html,xml,css,js}']
@@ -153,6 +168,7 @@ module.exports = function(grunt) {
     'assemble',
     'imagemin',
     'compass',
+    'copy',
     'cssmin',
     'uglify'
   ]);

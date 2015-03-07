@@ -49,8 +49,10 @@
 }
 
 /*-------------------------------------------------*/
-/* =  import variables.less file
+/* =  import variables.scss file and font awesome
 /*-------------------------------------------------*/
+@import "font-awesome-compass";
+@import "font-awesome";
 @import "settings/variables";
 
 /*-------------------------------------------------*/
