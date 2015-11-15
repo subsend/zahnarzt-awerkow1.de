@@ -350,11 +350,18 @@ header.one-page {
     }
 }
 
-.tp-caption.medium_thin_grey {
-    color: $color2;
+.tp-caption {
     font-size: 18px;
     font-family: $font;
     text-align: center;
+
+    &.medium_thin_black {
+        color: $black;
+    }
+
+    &.medium_thin_grey {
+        color: $color2;
+    }
 }
 
 .slider3 .tp-leftarrow.default {
